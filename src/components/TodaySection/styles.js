@@ -21,7 +21,7 @@ export const Container = styled.section`
   }
 
   @media (min-width: 74rem) {
-    width: 22%;
+    width: 28%;
     padding: 2.2rem;
   }
 `;
@@ -45,9 +45,13 @@ export const SearchButton = styled.div`
   font-size: 1.6rem;
   line-height: 1.878rem;
 
+  transition: 0.3s ease;
+
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    background-color: var(--color-blue-light);
   }
 `;
 
@@ -58,14 +62,20 @@ export const GpsButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  outline: none;
   border-radius: 50%;
+  transition: 0.3s ease;
 
   cursor: pointer;
 
   > svg {
     width: 22px;
     height: 22px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-blue-light);
   }
 `;
 
@@ -161,7 +171,7 @@ export const CloudsBackground = styled.div`
   background-size: contain;
   opacity: 0.1;
   overflow-x: hidden;
-  animation: moving 8s infinite linear;
+  animation: moving 30s infinite linear;
 
   @keyframes moving {
     0%,
@@ -179,7 +189,7 @@ export const CloudsBackground = styled.div`
   }
 
   @media (min-width: 74rem) {
-    width: 22%;
+    width: 28%;
   }
 `;
 
