@@ -7,6 +7,7 @@ export default createGlobalStyle`
     --color-gray: #6e707a;
     --color-text-primary: #e7e7eb;
     --color-text-secondary: #88869d;
+    --color-text-gray: #a09fb1;
 
     font-size: 62.5%;
   }
@@ -29,6 +30,11 @@ export default createGlobalStyle`
     background: none;
     font-family: 'Raleway', sans-serif;
     color: var(--color-text-primary);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
   }
 
   ul {
