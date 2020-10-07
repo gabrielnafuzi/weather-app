@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 57.5rem) {
     flex-direction: row;
     max-height: 100vh;
   }
@@ -15,7 +15,7 @@ export const LeftSide = styled.div`
   width: 100%;
   overflow-y: hidden;
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 57.5rem) {
     width: 30%;
   }
 
@@ -30,14 +30,16 @@ export const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-top: 2rem;
 
   header {
     display: none;
   }
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 57.5rem) {
     width: 70%;
-    padding: 2rem 10rem;
+    padding: 2rem 1rem;
+    overflow-y: scroll;
 
     header {
       width: 100%;

@@ -178,7 +178,7 @@ export const CloudsBackground = styled.div`
     }
   }
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 57.5rem) {
     width: 30%;
   }
 
