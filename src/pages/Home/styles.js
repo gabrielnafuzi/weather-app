@@ -29,7 +29,6 @@ export const RightSide = styled.div`
   background: var(--color-background);
   display: flex;
   flex-direction: column;
-  padding: 2rem 10rem;
   width: 100%;
 
   header {
@@ -38,6 +37,7 @@ export const RightSide = styled.div`
 
   @media (min-width: 61.25rem) {
     width: 70%;
+    padding: 2rem 10rem;
 
     header {
       width: 100%;
