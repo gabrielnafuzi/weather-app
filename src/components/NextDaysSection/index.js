@@ -3,14 +3,12 @@ import DayCard from '../DayCard';
 
 import { Container } from './styles';
 
-const NextDaysSection = () => {
+const NextDaysSection = ({ days }) => {
   return (
     <Container>
-      <DayCard />
-      <DayCard />
-      <DayCard />
-      <DayCard />
-      <DayCard />
+      {days.map(day => (
+        <DayCard day={day} />
+      ))}
     </Container>
   );
 };

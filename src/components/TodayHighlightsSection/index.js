@@ -9,7 +9,7 @@ import {
   HumidityBar,
 } from './styles';
 
-const TodayHighlightsSection = () => {
+const TodayHighlightsSection = ({ today }) => {
   return (
     <Container>
       <h1>Today's Highlights</h1>
@@ -18,22 +18,27 @@ const TodayHighlightsSection = () => {
         <Card>
           <h1>Wind status</h1>
           <h2>
-            7<span>mph</span>
+            {Math.round(today.wind_speed)}
+            <span>mph</span>
           </h2>
 
           <NavigationStats>
             <IconBlock>
-              <NavigationIcon style={{ transform: 'rotate(-150deg)' }} />
+              <NavigationIcon
+                style={{
+                  transform: `rotate(${Math.round(today.wind_direction)}deg)`,
+                }}
+              />
             </IconBlock>
 
-            <span>WSW</span>
+            <span>{today.wind_direction_compass}</span>
           </NavigationStats>
         </Card>
 
         <Card>
           <h1>Humidity</h1>
           <h2>
-            84 <span>%</span>
+            {today.humidity} <span>%</span>
           </h2>
 
           <HumidityBar>
@@ -44,7 +49,7 @@ const TodayHighlightsSection = () => {
             </div>
 
             <div className="bar">
-              <div style={{ width: '87%' }}></div>
+              <div style={{ width: `${today.humidity}%` }} />
             </div>
 
             <span>%</span>
@@ -54,14 +59,16 @@ const TodayHighlightsSection = () => {
         <Card>
           <h1>Visibility</h1>
           <h2>
-            6,4<span>miles</span>
+            {today.visibility.toFixed(2)}
+            <span>miles</span>
           </h2>
         </Card>
 
         <Card>
           <h1>Air Pressure</h1>
           <h2>
-            998<span>mb</span>
+            {today.air_pressure}
+            <span>mb</span>
           </h2>
         </Card>
       </div>

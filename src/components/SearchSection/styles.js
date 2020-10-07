@@ -63,6 +63,26 @@ export const SearchLocationForm = styled.form`
   display: flex;
   align-items: center;
   margin-bottom: 3.8rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24.57%;
+    height: 48px;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.878rem;
+    border-radius: 0.2rem;
+
+    color: var(--color-text-primary);
+    background: var(--color-blue-light);
+
+    outline: none;
+
+    cursor: pointer;
+  }
 `;
 
 export const InputBlock = styled.div`
@@ -104,28 +124,23 @@ export const InputBlock = styled.div`
   }
 `;
 
-export const SearchButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24.57%;
-  height: 48px;
-
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.878rem;
-  border-radius: 0.2rem;
-
-  color: var(--color-text-primary);
-
-  background: var(--color-blue-light);
-
-  cursor: pointer;
-`;
-
 export const ResultSearchBlock = styled.div`
   display: flex;
   width: 100%;
+  overflow-y: scroll;
+  max-height: 70vh;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-text-primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-blue-light);
+  }
 `;
 
 export const ItensList = styled.ul`
