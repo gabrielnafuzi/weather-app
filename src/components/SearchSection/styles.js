@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { Close, Search, NavigateNext } from '@material-ui/icons';
 
 export const Container = styled.div`
-  z-index: 10;
+  z-index: 8;
   width: 100%;
   height: 100vh;
   position: absolute;
   background: var(--color-blue);
   left: -100vw;
+  top: 0;
   opacity: 0;
   animation: appear 0.5s forwards;
 

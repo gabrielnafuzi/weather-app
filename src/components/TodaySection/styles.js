@@ -13,15 +13,9 @@ export const Container = styled.section`
     flex-direction: column;
     width: 100%;
     z-index: 1;
-    overflow-y: hidden;
-  }
-
-  @media (min-width: 61.25rem) {
-    width: 30%;
   }
 
   @media (min-width: 74rem) {
-    width: 28%;
     padding: 2.2rem;
   }
 `;
