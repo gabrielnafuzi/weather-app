@@ -1,22 +1,24 @@
 import React from 'react';
-
-import Sleet from '../../assets/icons/Sleet.png';
+import getFormattedDate from '../../utils/getFormattedDate';
 
 import { Container, IconBlock, MinMaxBlock } from './styles';
 
-const DayCard = () => {
+const DayCard = ({ day }) => {
   return (
     <Container>
-      <h1>Tomorrow</h1>
+      <h1>{getFormattedDate(day.applicable_date)}</h1>
 
       <IconBlock>
-        <img src={Sleet} alt="Sleet" />
+        <img
+          src={`https://www.metaweather.com/static/img/weather/${day.weather_state_abbr}.svg`}
+          alt={day.weather_state_name}
+        />
       </IconBlock>
 
       <MinMaxBlock>
-        <span className="max">16°C</span>
+        <span className="max">{Math.round(day.max_temp)}°C</span>
 
-        <span className="min">11°C</span>
+        <span className="min">{Math.round(day.min_temp)}°C</span>
       </MinMaxBlock>
     </Container>
   );

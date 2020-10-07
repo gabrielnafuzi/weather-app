@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Shower from '../../assets/icons/Shower.png';
 import SearchSection from '../SearchSection';
+import getFormattedDate from '../../utils/getFormattedDate';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   CloudsBackground,
 } from './styles';
 
-const TodaySection = () => {
+const TodaySection = ({ today, fetchData, title }) => {
   const [search, setSearch] = React.useState(false);
 
   return (
@@ -35,33 +35,38 @@ const TodaySection = () => {
             </GpsButton>
           </HeaderBlock>
 
-          <MainBlock>
-            <WeatherIconBlock>
-              <img src={Shower} alt="Shower" />
-            </WeatherIconBlock>
+          {today && (
+            <MainBlock>
+              <WeatherIconBlock>
+                <img
+                  src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
+                  alt={today.weather_state_name}
+                />
+              </WeatherIconBlock>
 
-            <WeatherDescription>
-              <h1>
-                15
-                <span>℃</span>
-              </h1>
-              <h2>Shower</h2>
+              <WeatherDescription>
+                <h1>
+                  {Math.round(today.the_temp)}
+                  <span>℃</span>
+                </h1>
+                <h2>{today.weather_state_name}</h2>
 
-              <p>
-                <span>Today</span>
-                <span>•</span>
-                <span>Fri, 5 Jun</span>
-              </p>
+                <p>
+                  <span>Today</span>
+                  <span>•</span>
+                  <span>{getFormattedDate(today.applicable_date)}</span>
+                </p>
 
-              <LocationBlock>
-                <LocationIcon />
-                <span>Helsinki</span>
-              </LocationBlock>
-            </WeatherDescription>
-          </MainBlock>
+                <LocationBlock>
+                  <LocationIcon />
+                  <span>{title}</span>
+                </LocationBlock>
+              </WeatherDescription>
+            </MainBlock>
+          )}
         </div>
       </Container>
-      {search && <SearchSection setSearch={setSearch} />}
+      {search && <SearchSection setSearch={setSearch} fetchData={fetchData} />}
     </>
   );
 };

@@ -7,42 +7,62 @@ import {
   SearchLocationForm,
   InputBlock,
   SearchIcon,
-  SearchButton,
   ResultSearchBlock,
   ItensList,
   ArrowRight,
 } from './styles';
 
-const SearchSection = ({ setSearch }) => {
+const SearchSection = ({ setSearch, fetchData }) => {
+  const [query, setQuery] = React.useState('');
+  const [places, setPlaces] = React.useState(null);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const response = await fetch(
+      `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${query}`
+    );
+
+    const json = await response.json();
+
+    setPlaces(json);
+  }
+
   return (
     <Container>
       <div className="wrapper">
         <CloseButton onClick={() => setSearch(false)}>
           <CloseIcon />
         </CloseButton>
-        <SearchLocationForm>
+        <SearchLocationForm onSubmit={handleSubmit}>
           <InputBlock>
             <SearchIcon />
-            <input type="text" placeholder="Search location" />
+            <input
+              type="text"
+              placeholder="Search location"
+              value={query}
+              onChange={({ target }) => setQuery(target.value)}
+            />
           </InputBlock>
 
-          <SearchButton type="submit">Search</SearchButton>
+          <button type="submit">Search</button>
         </SearchLocationForm>
 
         <ResultSearchBlock>
           <ItensList>
-            <li>
-              <span>London</span>
-              <ArrowRight />
-            </li>
-            <li>
-              <span>Barcelona</span>
-              <ArrowRight />
-            </li>
-            <li>
-              <span>Long Beach</span>
-              <ArrowRight />
-            </li>
+            {places &&
+              places.map(place => (
+                <li
+                  key={place.woeid}
+                  onClick={() => {
+                    setSearch(false);
+                    fetchData(place.woeid);
+                  }}
+                >
+                  <span>{place.title}</span>
+                  <ArrowRight />
+                </li>
+              ))}
           </ItensList>
         </ResultSearchBlock>
       </div>
