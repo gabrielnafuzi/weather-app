@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Close, Search, NavigateNext } from '@material-ui/icons';
 
-export const Container = styled.div`
+export const Container = styled.section`
   z-index: 8;
   width: 100%;
   height: 100vh;
@@ -26,7 +26,7 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 57.5rem) {
     width: 30%;
   }
 

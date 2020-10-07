@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
 
   margin: 0 auto;
@@ -8,4 +8,8 @@ export const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 57.5rem) {
+    flex-wrap: nowrap;
+  }
 `;

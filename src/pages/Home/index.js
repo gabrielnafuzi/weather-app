@@ -3,12 +3,8 @@ import React from 'react';
 import TodaySection from '../../components/TodaySection';
 import NextDaysSection from '../../components/NextDaysSection';
 
-import {
-  Container,
-  LeftSide,
-  RightSide,
-  
-} from './styles';
+import { Container, LeftSide, RightSide } from './styles';
+import TodayHighlightsSection from '../../components/TodayHighlightsSection';
 
 const Home = () => {
   return (
@@ -23,6 +19,7 @@ const Home = () => {
           <button className="fahrenheit">℉</button>
         </header>
         <NextDaysSection />
+        <TodayHighlightsSection />
       </RightSide>
     </Container>
   );
