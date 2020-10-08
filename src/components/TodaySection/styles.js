@@ -80,6 +80,17 @@ export const MainBlock = styled.main`
   justify-content: center;
 
   margin-top: 7.6rem;
+
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: animeLeft 0.3s forwards;
+
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
 `;
 
 export const WeatherIconBlock = styled.div`

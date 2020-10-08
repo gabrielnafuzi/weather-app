@@ -17,7 +17,7 @@ export const Container = styled.section`
     @media (min-width: 37.5rem) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      padding: 1.4rem;
+      padding: 1.4rem 0;
       column-gap: 2rem;
     }
   }
@@ -52,6 +52,38 @@ export const Card = styled.div`
       font-size: 3.6rem;
       line-height: 4.3rem;
     }
+  }
+
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: appear 0.4s forwards;
+
+  @keyframes appear {
+    50% {
+      opacity: 0.5;
+      transform: translateX(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+
+  &:nth-child(1) {
+    animation-duration: 0.6s;
+  }
+
+  &:nth-child(2) {
+    animation-duration: 0.8s;
+  }
+
+  &:nth-child(3) {
+    animation-duration: 1s;
+  }
+
+  &:nth-child(4) {
+    animation-duration: 1.2s;
   }
 `;
 

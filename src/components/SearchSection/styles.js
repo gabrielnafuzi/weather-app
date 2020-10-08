@@ -127,24 +127,18 @@ export const InputBlock = styled.div`
 export const ResultSearchBlock = styled.div`
   display: flex;
   width: 100%;
-  overflow-y: scroll;
   max-height: 70vh;
 
-  &::-webkit-scrollbar {
-    width: 3px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--color-text-primary);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-blue-light);
+  > span {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
   }
 `;
 
 export const ItensList = styled.ul`
   width: 100%;
+  overflow-y: scroll;
 
   li {
     display: flex;
@@ -178,6 +172,29 @@ export const ItensList = styled.ul`
       cursor: pointer;
     }
   }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-text-primary);
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-blue-light);
+    border-radius: 1rem;
+  }
+`;
+
+export const LoadingBlock = styled.div`
+  margin-top: 6rem;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SearchIcon = styled(Search)``;
