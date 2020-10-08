@@ -2,30 +2,48 @@ import React from 'react';
 
 import TodaySection from '../../components/TodaySection';
 import NextDaysSection from '../../components/NextDaysSection';
-
-import { Container, LeftSide, RightSide } from './styles';
 import TodayHighlightsSection from '../../components/TodayHighlightsSection';
+import Loading from '../../components/Loading';
+
+import { Container, LeftSide, RightSide, LoadingBlock } from './styles';
 
 const Home = () => {
   const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
 
   async function fetchData(placeId) {
-    const response = await fetch(
-      `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${placeId}/`
-    );
+    setLoading(true);
 
-    const json = await response.json();
+    try {
+      const response = await fetch(
+        `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${placeId}/`
+      );
 
-    setData(json);
+      const json = await response.json();
+
+      setData(json);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   }
 
   React.useEffect(() => {
     fetchData(2459115);
   }, []);
 
+  if (loading) {
+    return (
+      <LoadingBlock>
+        <Loading />
+      </LoadingBlock>
+    );
+  }
+
   return (
     <Container>
-      {data ? (
+      {data && (
         <>
           <LeftSide>
             <TodaySection
@@ -49,8 +67,6 @@ const Home = () => {
             <TodayHighlightsSection today={data.consolidated_weather[0]} />
           </RightSide>
         </>
-      ) : (
-        <span>Loading...</span>
       )}
     </Container>
   );
