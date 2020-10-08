@@ -7,7 +7,7 @@ const NextDaysSection = ({ days }) => {
   return (
     <Container>
       {days.map(day => (
-        <DayCard day={day} />
+        <DayCard key={day.id} day={day} />
       ))}
     </Container>
   );

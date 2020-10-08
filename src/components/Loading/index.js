@@ -7,7 +7,6 @@ import { Container, Wrapper, Rain, Text } from './styles';
 
 const Loading = () => {
   const drops = Array.from({ length: 10 }).map((_, i) => i);
-  console.log(drops);
 
   return (
     <Container>
