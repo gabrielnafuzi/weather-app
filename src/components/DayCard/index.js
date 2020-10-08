@@ -3,10 +3,10 @@ import getFormattedDate from '../../utils/getFormattedDate';
 
 import { Container, IconBlock, MinMaxBlock } from './styles';
 
-const DayCard = ({ day }) => {
+const DayCard = ({ day, isTomorrow }) => {
   return (
     <Container>
-      <h1>{getFormattedDate(day.applicable_date)}</h1>
+      <h1>{isTomorrow ? 'Tomorrow' : getFormattedDate(day.applicable_date)}</h1>
 
       <IconBlock>
         <img
