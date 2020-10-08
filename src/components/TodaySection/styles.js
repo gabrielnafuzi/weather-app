@@ -26,7 +26,7 @@ export const HeaderBlock = styled.header`
   align-items: center;
 `;
 
-export const SearchButton = styled.div`
+export const SearchButton = styled.button`
   width: 161px;
   height: 40px;
   display: flex;
@@ -40,6 +40,8 @@ export const SearchButton = styled.div`
   line-height: 1.878rem;
 
   transition: 0.3s ease;
+
+  outline: none;
 
   cursor: pointer;
 

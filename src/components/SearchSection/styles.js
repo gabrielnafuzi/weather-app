@@ -10,7 +10,7 @@ export const Container = styled.section`
   left: -100vw;
   top: 0;
   opacity: 0;
-  animation: appear 0.5s forwards;
+  animation: show 0.5s forwards;
 
   .wrapper {
     width: 100%;
@@ -19,7 +19,7 @@ export const Container = styled.section`
     flex-direction: column;
   }
 
-  @keyframes appear {
+  @keyframes show {
     to {
       left: 0;
       opacity: 1;
