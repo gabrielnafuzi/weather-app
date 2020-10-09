@@ -1,7 +1,11 @@
 import React from 'react';
 
 import SearchSection from '../SearchSection';
-import { getFirstPlaceIdByLatLong, getFormattedDate } from '../../utils';
+import {
+  getFirstPlaceIdByLatLong,
+  getFormattedDate,
+  toFahrenheit,
+} from '../../utils';
 
 import {
   Container,
@@ -17,7 +21,7 @@ import {
   CloudsBackground,
 } from './styles';
 
-const TodaySection = ({ today, fetchData, title }) => {
+const TodaySection = ({ today, fetchData, title, degreeType }) => {
   const [search, setSearch] = React.useState(false);
 
   function getCoords() {
@@ -67,8 +71,11 @@ const TodaySection = ({ today, fetchData, title }) => {
 
               <WeatherDescription>
                 <h1>
-                  {Math.round(today.the_temp)}
-                  <span>℃</span>
+                  {degreeType === 'celsius'
+                    ? Math.round(today.the_temp)
+                    : toFahrenheit(today.the_temp)}
+
+                  <span>{degreeType === 'celsius' ? '℃' : '℉'}</span>
                 </h1>
                 <h2>{today.weather_state_name}</h2>
 
