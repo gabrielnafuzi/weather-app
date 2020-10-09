@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchSection from '../SearchSection';
-import getFormattedDate from '../../utils/getFormattedDate';
+import { getFirstPlaceIdByLatLong, getFormattedDate } from '../../utils';
 
 import {
   Container,
@@ -20,6 +20,27 @@ import {
 const TodaySection = ({ today, fetchData, title }) => {
   const [search, setSearch] = React.useState(false);
 
+  function getCoords() {
+    navigator.geolocation.getCurrentPosition(
+      async position => {
+        const { latitude, longitude } = position.coords;
+
+        window.localStorage.setItem('latitude', latitude);
+        window.localStorage.setItem('longitude', longitude);
+
+        const placeId = await getFirstPlaceIdByLatLong(latitude, longitude);
+
+        fetchData(placeId);
+      },
+      err => {
+        console.log(err);
+      },
+      {
+        timeout: 30000,
+      }
+    );
+  }
+
   return (
     <>
       <Container>
@@ -30,7 +51,7 @@ const TodaySection = ({ today, fetchData, title }) => {
               Search for places
             </SearchButton>
 
-            <GpsButton>
+            <GpsButton onClick={getCoords}>
               <GpsIcon />
             </GpsButton>
           </HeaderBlock>

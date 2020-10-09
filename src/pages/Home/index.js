@@ -4,6 +4,7 @@ import TodaySection from '../../components/TodaySection';
 import NextDaysSection from '../../components/NextDaysSection';
 import TodayHighlightsSection from '../../components/TodayHighlightsSection';
 import Loading from '../../components/Loading';
+import { getFirstPlaceIdByLatLong } from '../../utils';
 
 import { Container, LeftSide, RightSide, LoadingBlock } from './styles';
 
@@ -16,7 +17,7 @@ const Home = () => {
 
     try {
       const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${placeId}/`
+        `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/${placeId}/`
       );
 
       const json = await response.json();
@@ -30,7 +31,18 @@ const Home = () => {
   }
 
   React.useEffect(() => {
-    fetchData(2459115);
+    const latitude = window.localStorage.getItem('latitude');
+    const longitude = window.localStorage.getItem('longitude');
+
+    if (latitude && longitude) {
+      (async () => {
+        const placeId = await getFirstPlaceIdByLatLong(latitude, longitude);
+
+        fetchData(placeId);
+      })();
+    } else {
+      fetchData(2459115);
+    }
   }, []);
 
   if (loading) {

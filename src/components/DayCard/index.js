@@ -1,5 +1,5 @@
 import React from 'react';
-import getFormattedDate from '../../utils/getFormattedDate';
+import { getFormattedDate } from '../../utils';
 
 import { Container, IconBlock, MinMaxBlock } from './styles';
 

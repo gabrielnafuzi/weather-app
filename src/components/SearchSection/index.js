@@ -25,7 +25,7 @@ const SearchSection = ({ setSearch, fetchData }) => {
 
     try {
       const response = await fetch(
-        `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${query}`
+        `https://api.allorigins.win/raw?url=https://www.metaweather.com/api/location/search/?query=${query}`
       );
 
       const json = await response.json();
