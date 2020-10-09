@@ -1,9 +1,9 @@
 import React from 'react';
-import { getFormattedDate } from '../../utils';
+import { getFormattedDate, toFahrenheit } from '../../utils';
 
 import { Container, IconBlock, MinMaxBlock } from './styles';
 
-const DayCard = ({ day, isTomorrow }) => {
+const DayCard = ({ day, isTomorrow, degreeType }) => {
   return (
     <Container>
       <h1>{isTomorrow ? 'Tomorrow' : getFormattedDate(day.applicable_date)}</h1>
@@ -16,9 +16,21 @@ const DayCard = ({ day, isTomorrow }) => {
       </IconBlock>
 
       <MinMaxBlock>
-        <span className="max">{Math.round(day.max_temp)}°C</span>
+        <span className="max">
+          {degreeType === 'celsius'
+            ? Math.round(day.max_temp)
+            : toFahrenheit(day.max_temp)}
 
-        <span className="min">{Math.round(day.min_temp)}°C</span>
+          {degreeType === 'celsius' ? '℃' : '℉'}
+        </span>
+
+        <span className="min">
+          {degreeType === 'celsius'
+            ? Math.round(day.min_temp)
+            : toFahrenheit(day.min_temp)}
+
+          {degreeType === 'celsius' ? '℃' : '℉'}
+        </span>
       </MinMaxBlock>
     </Container>
   );

@@ -11,6 +11,9 @@ import { Container, LeftSide, RightSide, LoadingBlock } from './styles';
 const Home = () => {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
+  const [degreeType, setDegreeType] = React.useState(
+    window.localStorage.getItem('degreeType') || 'celsius'
+  );
 
   async function fetchData(placeId) {
     setLoading(true);
@@ -62,19 +65,37 @@ const Home = () => {
               today={data.consolidated_weather[0]}
               fetchData={fetchData}
               title={data.title}
+              degreeType={degreeType}
             />
           </LeftSide>
 
           <RightSide>
             <header>
-              <button className="celsius active">℃</button>
-              <button className="fahrenheit">℉</button>
+              <button
+                className={`celsius ${degreeType === 'celsius' && 'active'}`}
+                onClick={() => {
+                  setDegreeType('celsius');
+                  window.localStorage.setItem('degreeType', 'celsius');
+                }}
+              >
+                ℃
+              </button>
+              <button
+                className={`fahrenheit ${degreeType === 'fahrenheit' && 'active'}`}
+                onClick={() => {
+                  setDegreeType('fahrenheit');
+                  window.localStorage.setItem('degreeType', 'fahrenheit');
+                }}
+              >
+                ℉
+              </button>
             </header>
             <NextDaysSection
               days={data.consolidated_weather.slice(
                 1,
                 data.consolidated_weather.length
               )}
+              degreeType={degreeType}
             />
             <TodayHighlightsSection today={data.consolidated_weather[0]} />
           </RightSide>

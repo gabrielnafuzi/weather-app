@@ -33,51 +33,47 @@ export const RightSide = styled.div`
   padding-top: 2rem;
 
   header {
-    display: none;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3.6rem;
+    padding-right: 7rem;
+
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      text-align: center;
+      transition: 0.2s ease;
+      outline: none;
+      background: #585676;
+
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      &.celsius {
+        margin-right: 1.2rem;
+      }
+
+      &.active {
+        background: var(--color-text-primary);
+
+        color: #110e3c;
+      }
+    }
   }
 
   @media (min-width: 57.5rem) {
     width: 70%;
     padding: 2rem 1rem;
     overflow-y: scroll;
-
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 3.6rem;
-      padding-right: 7rem;
-
-      button {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-
-        font-weight: 700;
-        font-size: 1.8rem;
-        line-height: 2.1rem;
-        text-align: center;
-        transition: 0.2s ease;
-        outline: none;
-        background: #585676;
-
-        cursor: pointer;
-
-        &:hover {
-          transform: translateY(-4px);
-        }
-
-        &.celsius {
-          margin-right: 1.2rem;
-        }
-
-        &.active {
-          background: var(--color-text-primary);
-
-          color: #110e3c;
-        }
-      }
-    }
   }
 
   @media (min-width: 74rem) {
